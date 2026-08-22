@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhoebeHub - Enterprise Software & AI Solutions</title>
+    
+    <!-- Google Fonts: Plus Jakarta Sans & Space Grotesk (Stylist Tech Font) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- RESET & VARIABLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary-blue: #0284c7;
+            --primary-dark: #0369a1;
+            --primary-navy: #0f172a;
+            --accent-cyan: #38bdf8;
+            --bg-soft-blue: #f0f9ff;
+            --bg-light: #f8fafc;
+            --bg-card: #ffffff;
+            --text-dark: #0f172a;
+            --text-muted: #475569;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 4px 6px -1px rgba(2, 132, 199, 0.05);
+            --shadow-lg: 0 20px 35px -5px rgba(2, 132, 199, 0.12);
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+            --font-tech: 'Space Grotesk', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1050px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 20px;
+        }
+
+        .logo {
+            font-family: var(--font-tech);
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--primary-navy);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            font-size: 0.92rem;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-blue);
+        }
+
+        .btn-header-contact {
+            padding: 8px 18px;
+            background-color: var(--primary-blue);
+            color: #ffffff !important;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+        }
+
+        .btn-header-contact:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        /* --- COMPACT HERO SLIDER --- */
+        .hero-section {
+            margin-top: 75px;
+            padding: 20px 0 10px 0;
+        }
+
+        .slider-container {
+            max-width: 1000px; /* Ukuran kompak agar tidak terlalu lebar */
+            margin: 0 auto;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            height: 400px;
+        }
+
+        .slide {
+            min-width: 100%;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+        }
+
+        .slide-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(90deg, rgba(15, 23, 42, 0.88) 0%, rgba(2, 132, 199, 0.45) 100%);
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            color: #ffffff;
+            padding: 0 50px;
+            max-width: 620px;
+        }
+
+        .badge-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(56, 189, 248, 0.2);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+
+        .slide-content h2 {
+            font-family: var(--font-tech);
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            line-height: 1.25;
+            color: #ffffff;
+        }
+
+        .slide-content p {
+            font-size: 0.95rem;
+            margin-bottom: 22px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .btn-primary-blue {
+            padding: 10px 22px;
+            background-color: var(--primary-blue);
+            color: #ffffff;
+            font-weight: 600;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-size: 0.88rem;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary-blue:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Slider Controls */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s;
+        }
+
+        .slider-btn:hover {
+            background: var(--primary-blue);
+            border-color: var(--primary-blue);
+        }
+
+        .prev-btn { left: 15px; }
+        .next-btn { right: 15px; }
+
+        /* --- STATS SECTION --- */
+        .stats-section {
+            padding: 30px 20px;
+            background-color: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .stats-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-family: var(--font-tech);
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 2px;
+        }
+
+        .stat-item p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* --- ABOUT SECTION --- */
+        .section-padding {
+            padding: 60px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-subtitle {
+            color: var(--primary-blue);
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .section-title {
+            font-family: var(--font-tech);
+            font-size: 2rem;
+            color: var(--text-dark);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .tech-stack-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tech-tag {
+            padding: 5px 12px;
+            background: var(--bg-soft-blue);
+            color: var(--primary-dark);
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .about-image-wrapper {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* --- PRODUCTS / SERVICES SECTION --- */
+        .bg-soft {
+            background-color: var(--bg-soft-blue);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(2, 132, 199, 0.3);
+        }
+
+        .product-img {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .category-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(4px);
+            color: var(--primary-blue);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .product-body {
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-title {
+            font-family: var(--font-tech);
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .product-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+
+        .card-action {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .btn-card-detail {
+            color: var(--primary-blue);
+            font-weight: 700;
+            font-size: 0.85rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap 0.2s ease;
+        }
+
+        .btn-card-detail:hover {
+            gap: 10px;
+            color: var(--primary-dark);
+        }
+
+        /* --- MODAL DETAIL --- */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.65);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(6px);
+        }
+
+        .modal-content {
+            background: #fff;
+            width: 100%;
+            max-width: 550px;
+            border-radius: 16px;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+            animation: modalSlide 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes modalSlide {
+            from { opacity: 0; transform: translateY(20px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 18px;
+            right: 20px;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: color 0.2s;
+        }
+
+        .close-btn:hover { color: var(--primary-blue); }
+
+        .modal-header-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .modal-title {
+            font-family: var(--font-tech);
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        .modal-body-text {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.65;
+            margin-bottom: 20px;
+        }
+
+        .modal-features {
+            background: var(--bg-soft-blue);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .modal-features h4 {
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .modal-features ul {
+            list-style: none;
+        }
+
+        .modal-features li {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .modal-features i {
+            color: var(--primary-blue);
+            font-size: 0.75rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--primary-navy);
+            color: #fff;
+            padding: 60px 20px 20px 20px;
+            border-top: 4px solid var(--primary-blue);
+        }
+
+        .footer-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1.2fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-family: var(--font-tech);
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 18px;
+            position: relative;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            display: block;
+            width: 35px;
+            height: 2px;
+            background: var(--primary-blue);
+            margin-top: 6px;
+        }
+
+        .footer-col p {
+            font-size: 0.88rem;
+            color: #94a3b8;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            font-size: 0.88rem;
+            color: #94a3b8;
+            margin-bottom: 8px;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .footer-contact-item i {
+            color: var(--accent-cyan);
+            margin-top: 4px;
+        }
+
+        .footer-bottom {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #1e293b;
+            font-size: 0.82rem;
+            color: #64748b;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 868px) {
+            .about-grid { grid-template-columns: 1fr; }
+            .footer-container { grid-template-columns: 1fr; gap: 30px; }
+            .slide-content { padding: 0 30px; }
+            .slide-content h2 { font-size: 1.6rem; }
+            .slider-wrapper { height: 340px; }
+            .nav-menu { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER / NAVIGATION -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-cube"></i> Phoebe<span>Hub</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#product" class="nav-link">Product & Service</a></li>
+                <li><a href="#contact" class="nav-link">Kontak</a></li>
+            </ul>
+            <a href="https://wa.me/6282218866002" target="_blank" class="btn-header-contact">
+                <i class="fab fa-whatsapp"></i> WhatsApp Us
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SLIDER SECTION (COMPACT & CONTAINERIZED) -->
+    <section id="home" class="hero-section">
+        <div class="slider-container">
+            <div class="slider-wrapper" id="sliderWrapper">
+                
+                <!-- Slide 1: Enterprise AI Solutions -->
+                <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80');">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <span class="badge-tag">Artificial Intelligence</span>
+                        <h2>Smart AI Integration & Automation</h2>
+                        <p>Mentransformasi operasional bisnis Anda dengan solusi Machine Learning, NLP, dan sistem otomatisasi AI terkini.</p>
+                        <button class="btn-primary-blue" onclick="openModal('Inovasi AI Enterprise', 'PhoebeHub merancang solusi berbasis AI terintegrasi seperti Predictive Analytics, Natural Language Processing (NLP), serta Machine Learning yang dapat disesuaikan untuk skala industri.', ['Otomatisasi Alur Kerja Pintar', 'Prediksi Analisis Presisi', 'Integrasi Model AI Custom'])">
+                            Pelajari AI Solusi <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Slide 2: Software Development -->
+                <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80');">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <span class="badge-tag">Software Engineering</span>
+                        <h2>Custom Web & Mobile Development</h2>
+                        <p>Pengembangan perangkat lunak skala enterprise dengan arsitektur scalable, aman, dan berkinerja tinggi.</p>
+                        <button class="btn-primary-blue" onclick="openModal('Software Development', 'Layanan end-to-end pembuatan sistem berbasis Web, Aplikasi Mobile, API Microservices, hingga sistem ERP/CRM enterprise dengan standar keamanan tinggi.', ['Arsitektur Cloud Scalable', 'Keamanan Siber & Enkripsi', 'Sistem Cross-Platform'])">
+                            Pelajari Software Dev <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Slide 3: Business Analytics -->
+                <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80');">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <span class="badge-tag">Business Intelligence</span>
+                        <h2>Data Driven Decision Making</h2>
+                        <p>Optimalkan potensi data bisnis Anda melalui visualisasi dashboard interaktif dan analisa statistik mendalam.</p>
+                        <button class="btn-primary-blue" onclick="openModal('Bisnis Analisis & BI', 'Ubah data mentah perusahaan menjadi Insight bisnis yang bernilai tinggi melalui Dashboard BI interaktif, Audit Sistem, dan Rekayasa Proses Bisnis.', ['Visualisasi Dashboard Real-time', 'Audit & Analisis Proses Bisnis', 'Strategi Keputusan Berbasis Data'])">
+                            Pelajari Analytics <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Slider Controls -->
+            <button class="slider-btn prev-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+            <button class="slider-btn next-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- STATS BAR -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>99.9%</h3>
+                <p>Uptime & System Reliability</p>
+            </div>
+            <div class="stat-item">
+                <h3>8+</h3>
+                <p>Sektor Industri Didukung</p>
+            </div>
+            <div class="stat-item">
+                <h3>24/7</h3>
+                <p>SLA & Maintenance Support</p>
+            </div>
+            <div class="stat-item">
+                <h3>End-to-End</h3>
+                <p>Teknologi Solusi Terpadu</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <span class="section-subtitle">Mengenal PhoebeHub</span>
+                    <h2 class="section-title">Software House Terpercaya untuk Solusi Digital Enterprise</h2>
+                    <p style="margin-top: 15px;">
+                        <strong>PhoebeHub</strong> adalah perusahaan IT & Software House yang berfokus pada transformasi digital. Kami melayani pengembangan sistem canggih berbasis AI, analisis bisnis komprehensif, pembuatan aplikasi kustom, hingga pemeliharaan sistem skala besar (*maintenance*).
+                    </p>
+                    <p>
+                        Jangkauan layanan kami mencakup berbagai sektor seperti **Manufacturing, E-Commerce, Retail, Perbankan/Fintech, Sistem Jalan Tol, FMCG, hingga FnB**.
+                    </p>
+                    
+                    <div class="tech-stack-tags">
+                        <span class="tech-tag">Artificial Intelligence</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Business Analysis</span>
+                        <span class="tech-tag">Web & App Dev</span>
+                        <span class="tech-tag">SLA Maintenance</span>
+                        <span class="tech-tag">Cloud Infrastructure</span>
+                    </div>
+                </div>
+                <div class="about-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Tim Software Engineering PhoebeHub">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS & SERVICES SECTION -->
+    <section id="product" class="section-padding bg-soft">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Layanan Utama</span>
+                <h2 class="section-title">Produk & Solusi Lintas Industri</h2>
+            </div>
+
+            <div class="product-grid">
+                
+                <!-- Service 1: AI Solutions -->
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=600&q=80');">
+                        <span class="category-badge">Artificial Intelligence</span>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-title">AI & Machine Learning</h3>
+                        <p class="product-desc">Pengembangan model AI, Computer Vision, Chatbot Cerdas, dan otomatisasi berbasis analisis prediktif.</p>
+                        <div class="card-action">
+                            <button class="btn-card-detail" onclick="openModal('AI & Machine Learning', 'Mengintegrasikan kecerdasan buatan ke dalam sistem operasional Anda. Mulai dari pemrosesan dokumen otomatis, analisis persepsi, hingga Computer Vision untuk sektor industri.', ['Computer Vision & Recognition', 'Chatbot LLM & Virtual Assistant', 'Predictive Maintenance Engine'])">
+                                Detail Layanan <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 2: Business Analysis -->
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80');">
+                        <span class="category-badge">Business Intelligence</span>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-title">Bisnis Analisis & BI</h3>
+                        <p class="product-desc">Perancangan arsitektur data, pemetaan alur proses bisnis, serta pembuatan Dashboard BI interaktif.</p>
+                        <div class="card-action">
+                            <button class="btn-card-detail" onclick="openModal('Bisnis Analisis & BI', 'Analisis mendalam terhadap sistem berjalan untuk mengidentifikasi inefisiensi, kebutuhan integrasi data, serta perancangan KPI Dashboard real-time.', ['Visualisasi Data Interaktif', 'Pemetaan & Optimalisasi Proses', 'Laporan Analisis Tren Bisnis'])">
+                                Detail Layanan <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 3: Software Development -->
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80');">
+                        <span class="category-badge">Development</span>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-title">Custom Software Dev</h3>
+                        <p class="product-desc">Pengembangan platform Web, Mobile App (iOS/Android), ERP, CRM, dan API kustom skala enterprise.</p>
+                        <div class="card-action">
+                            <button class="btn-card-detail" onclick="openModal('Custom Software Development', 'Membangun perangkat lunak dari nol sesuai spesifikasi kebutuhan bisnis Anda dengan jaminan skalabilitas tinggi dan performa handal.', ['Aplikasi Mobile iOS & Android', 'Platform Web Enterprise', 'Integrasi API & Microservices'])">
+                                Detail Layanan <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 4: Maintenance & Infrastructure -->
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80');">
+                        <span class="category-badge">SLA Support</span>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-title">Maintenance & Cloud SLA</h3>
+                        <p class="product-desc">Layanan pemeliharaan sistem rutin, penanganan insiden, audit keamanan, serta pengawasan server 24/7.</p>
+                        <div class="card-action">
+                            <button class="btn-card-detail" onclick="openModal('System Maintenance & SLA Support', 'Memastikan infrastruktur dan perangkat lunak Anda berjalan tanpa *downtime* dengan dukungan SLA ketat, penambalan keamanan, dan backup otomatis.', ['Pengawasan Server 24/7', 'Penambalan Keamanan Berkala', 'Dukungan SLA Penanganan Cepat'])">
+                                Detail Layanan <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Industry 1: Manufacturing, FMCG & Retail -->
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80');">
+                        <span class="category-badge">Industri & Ritel</span>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-title">Manufacturing, FMCG & Retail</h3>
+                        <p class="product-desc">Solusi manajemen rantai pasok (SCM), pemantauan stok otomatis, POS, dan sistem kontrol pabrik.</p>
+                        <div class="card-action">
+                            <button class="btn-card-detail" onclick="openModal('Solusi Manufacturing, FMCG & Retail', 'Sistem ERP pabrik, manajemen inventori real-time, integrasi POS rantai toko, serta pemantauan armada distribusi barang.', ['Sistem Inventori & SCM', 'POS Ritel Terintegrasi', 'Pemantauan Produksi Pabrik'])">
+                                Detail Layanan <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Industry 2: Banking, Toll & E-Commerce -->
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80');">
+                        <span class="category-badge">Fintech, Toll & FnB</span>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-title">Banking, Toll, E-Com & FnB</h3>
+                        <p class="product-desc">Sistem e-payment aman, otomatisasi gardu toll, transaksi e-commerce, hingga platform pesanan FnB.</p>
+                        <div class="card-action">
+                            <button class="btn-card-detail" onclick="openModal('Solusi Banking, Toll, E-Commerce & FnB', 'Pengembangan platform keuangan berstandar PCI-DSS, sistem pemrosesan transaksi gardu toll yang cepat, e-commerce omnichannel, dan aplikasi manajemen FnB.', ['Integrasi Payment Gateway', 'Sistem Otonom Tol & RFID', 'Aplikasi Omnichannel & FnB'])">
+                                Detail Layanan <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER & CONTACT -->
+    <footer id="contact">
+        <div class="footer-container">
+            
+            <div class="footer-col">
+                <h3>PhoebeHub</h3>
+                <p>PhoebeHub adalah mitra inovasi teknologi enterprise yang menghadirkan solusi Artificial Intelligence, Bisnis Analisis, Software Development, serta Maintenance terpercaya lintas sektor industri.</p>
+            </div>
+
+            <div class="footer-col">
+                <h3>Cakupan Industri</h3>
+                <ul>
+                    <li>• Manufacturing & Industrial</li>
+                    <li>• E-Commerce & Retail Modern</li>
+                    <li>• Banking & Financial Technology</li>
+                    <li>• Toll Transportation System</li>
+                    <li>• FMCG & FnB Enterprise</li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Kontak Kami</h3>
+                <div class="footer-contact-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <span><strong>WhatsApp:</strong><br><a href="https://wa.me/6282218866002" target="_blank" style="color: #94a3b8;">082218866002</a></span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="far fa-envelope"></i>
+                    <span><strong>Email:</strong><br><a href="mailto:hallo@phoebehub.id" style="color: #94a3b8;">hallo@phoebehub.id</a></span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span><strong>Kantor Pusat:</strong><br>Ciparay, Kab. Bandung, Jawa Barat</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 PhoebeHub. All Rights Reserved. Enterprise Software House Solution.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL DETAIL POPUP -->
+    <div class="modal" id="detailModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <span class="modal-header-tag">Informasi Detail Solusi</span>
+            <h3 class="modal-title" id="modalTitle">Judul Layanan</h3>
+            <p class="modal-body-text" id="modalDescription"></p>
+            
+            <div class="modal-features">
+                <h4>Fitur & Keunggulan Layanan:</h4>
+                <ul id="modalFeaturesList"></ul>
+            </div>
+
+            <a href="https://wa.me/6282218866002" target="_blank" class="btn-primary-blue" style="width: 100%; justify-content: center; text-align: center;">
+                <i class="fab fa-whatsapp"></i> Diskusi Proyek via WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // --- SLIDER AUTOMATION & LOGIC ---
+        const wrapper = document.getElementById('sliderWrapper');
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentIndex = 0;
+
+        function updateSlider() {
+            wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateSlider();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateSlider();
+        });
+
+        // Auto slide interval (5 Seconds)
+        let autoSlide = setInterval(() => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateSlider();
+        }, 5000);
+
+        // Pause auto slide on hover
+        document.querySelector('.slider-container').addEventListener('mouseenter', () => clearInterval(autoSlide));
+        document.querySelector('.slider-container').addEventListener('mouseleave', () => {
+            autoSlide = setInterval(() => {
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateSlider();
+            }, 5000);
+        });
+
+        // --- MODAL POPUP LOGIC ---
+        const modal = document.getElementById('detailModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDesc = document.getElementById('modalDescription');
+        const modalFeaturesList = document.getElementById('modalFeaturesList');
+
+        function openModal(title, text, features = []) {
+            modalTitle.innerText = title;
+            modalDesc.innerText = text;
+            
+            // Clear & populate features list
+            modalFeaturesList.innerHTML = '';
+            if (features.length > 0) {
+                features.forEach(ft => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<i class="fas fa-check-circle"></i> ${ft}`;
+                    modalFeaturesList.appendChild(li);
+                });
+            } else {
+                modalFeaturesList.innerHTML = '<li><i class="fas fa-check-circle"></i> Standar Kualitas & Keamanan PhoebeHub</li>';
+            }
+
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        // Close modal when clicking dark overlay
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
